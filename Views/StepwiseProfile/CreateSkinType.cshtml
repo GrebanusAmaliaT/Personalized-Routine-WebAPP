@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Select Your Skin Type";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="CreateSkinType" method="post">
+    <div class="form-group">
+        <label for="skinType">Skin Type</label>
+        <select class="form-control" id="skinType" name="skinType">
+            <option value="">-- Please select --</option>
+            <option value="Normal">Normal</option>
+            <option value="Dry">Dry</option>
+            <option value="Oily">Oily</option>
+            <option value="Combination">Combination</option>
+            <option value="Don't know yet">Don't know yet</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Continue</button>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

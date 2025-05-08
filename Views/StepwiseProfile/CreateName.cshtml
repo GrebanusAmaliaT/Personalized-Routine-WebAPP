@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "What is your name?";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="CreateName" method="post">
+    <div class="form-group">
+        <label for="name">Nume</label>
+        <input type="text" class="form-control" id="name" name="name" />
+        <!-- <span asp-validation-for="name" class="text-danger"></span> -->
+            </div>
+    <button type="submit" class="btn btn-primary">Continuă</button>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

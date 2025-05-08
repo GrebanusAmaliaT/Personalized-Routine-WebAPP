@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Welcome";
+    var quote = ViewBag.Quote ?? "Stay motivated!";
+    var date = DateTime.Today;
+}
+
+<div class="container mt-5">
+
+    <!-- Citat motivațional -->
+    <div class="text-center mb-4">
+        <h2 class="fw-bold">@quote</h2>
+        <p class="text-muted">@date.ToString("dddd, MMMM dd, yyyy")</p>
+    </div>
+
+    <!-- Calendar simplu -->
+    <div class="calendar mb-4 text-center">
+        <h4>📅 Today is: <span class="badge bg-info text-dark">@date.Day</span> <strong>@date.ToString("MMMM")</strong></h4>
+    </div>
+
+    <!-- Secțiunea de jurnal -->
+    <div class="journal-section">
+        <h4>📝 Your Personal Journal</h4>
+        <form method="post" asp-action="SaveJournalEntry">
+            <textarea name="entryText" class="form-control" rows="5" placeholder="Write here..."></textarea>
+            <button type="submit" class="btn btn-primary mt-2">Save Entry</button>
+        </form>
+    </div>
+
+</div>

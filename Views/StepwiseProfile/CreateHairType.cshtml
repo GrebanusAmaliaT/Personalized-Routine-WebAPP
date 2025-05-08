@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Select Your Hair Type";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="CreateHairType" method="post">
+    <div class="form-group">
+        <label for="hairType">Hair Type</label>
+        <select class="form-control" id="hairType" name="hairType">
+            <option value="">-- Please select --</option>
+            <option value="Straight">Straight</option>
+            <option value="Wavy">Wavy</option>
+            <option value="Curly">Curly</option>
+            <option value="Coily">Coily</option>
+            <option value="Other">Other</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Continue</button>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

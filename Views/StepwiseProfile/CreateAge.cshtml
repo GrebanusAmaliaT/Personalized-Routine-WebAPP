@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Select Your Age Category";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="CreateAge" method="post">
+    <div class="form-group">
+        <label for="ageCategory">Age Category</label>
+        <select class="form-control" id="ageCategory" name="ageCategory">
+            <option value="">-- Please select --</option>
+            <option value="Below 18">Below 18</option>
+            <option value="18-24">18-24</option>
+            <option value="25-50">25-50</option>
+            <option value="51+">51+</option>
+        </select>
+     </div>
+    <button type="submit" class="btn btn-primary">Continue</button>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

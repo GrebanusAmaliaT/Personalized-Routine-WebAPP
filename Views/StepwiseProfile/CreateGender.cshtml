@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Select Your Gender";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="CreateGender" method="post">
+    <div class="form-group">
+        <label for="gender">Gender</label>
+        <select class="form-control" id="gender" name="gender">
+            <option value="">-- Please select --</option>
+            <option value="Female">Female</option>
+            <option value="Male">Male</option>
+            <option value="Prefer not to say">Prefer not to say</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Continue</button>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

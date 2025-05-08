@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Review Your Profile";
+    string name = TempData["Name"] as string ?? "N/A";
+    string gender = TempData["Gender"] as string ?? "N/A";
+    string age = TempData["AgeCategory"] as string ?? "N/A";
+    string skin = TempData["SkinType"] as string ?? "N/A";
+    string hair = TempData["HairType"] as string ?? "N/A";
+
+    string imagePath = gender switch
+    {
+        "Male" => "/images/male.png",
+        "Female" => "/images/female.png",
+        "Prefer not to say" => "/images/cat.png",
+        _ => "/images/cat.png"
+    };
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="profile-review">
+    <div class="info">
+        <p><strong>Name:</strong> @name</p>
+        <p><strong>Gender:</strong> @gender</p>
+        <p><strong>Age Category:</strong> @age</p>
+        <p><strong>Skin Type:</strong> @skin</p>
+        <p><strong>Hair Type:</strong> @hair</p>
+    </div>
+
+    <div class="avatar">
+        <img src="@imagePath" alt="Avatar" style="max-width: 200px;" />
+    </div>
+</div>
+
+<form asp-action="ConfirmProfile" method="post">
+    <button type="submit" class="btn btn-success"> I love it! </button>
+</form>
