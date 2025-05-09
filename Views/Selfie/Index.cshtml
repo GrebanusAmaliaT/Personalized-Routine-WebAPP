@@ -1,0 +1,29 @@
+﻿@model List<Selfie>
+
+@{
+    ViewData["Title"] = "Daily Selfies";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">📸 Upload Your Daily Selfie</h2>
+
+    <form asp-action="Upload" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <input type="file" name="Image" accept="image/*" class="form-control" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Upload</button>
+    </form>
+
+    <hr class="my-4" />
+
+    <h4 class="mb-3">🧩 Your Visual Journey</h4>
+    <div class="row">
+        @foreach (var selfie in Model)
+        {
+            <div class="col-md-3 col-sm-4 col-6 mb-3">
+                <img src="@selfie.ImagePath" class="img-fluid rounded shadow-sm" alt="Selfie from @selfie.UploadDate.ToShortDateString()" />
+                <small class="d-block text-muted text-center">@selfie.UploadDate.ToShortDateString()</small>
+            </div>
+        }
+    </div>
+</div>

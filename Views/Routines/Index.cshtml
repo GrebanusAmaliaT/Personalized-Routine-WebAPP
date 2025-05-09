@@ -1,0 +1,11 @@
+﻿@{
+    ViewData["Title"] = "Choose Your Routine";
+}
+<h2>@ViewData["Title"]</h2>
+<div class="d-flex flex-column gap-2">
+    <a class="btn btn-outline-primary" asp-action="Configure" asp-route-type="Morning">🌞 Morning Routine</a>
+    <a class="btn btn-outline-secondary" asp-action="Configure" asp-route-type="Evening">🌙 Evening Routine</a>
+    <a class="btn btn-outline-info" asp-action="Configure" asp-route-type="Exfoliation">🧽 Exfoliation</a>
+</div>
+
+

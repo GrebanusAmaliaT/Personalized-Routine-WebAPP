@@ -37,6 +37,10 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+app.MapControllerRoute(
+    name: "community",
+    pattern: "{controller=Community}/{action=Index}/{id?}");
+
 app.MapRazorPages(); // permite acces la /Identity/Account/Register etc.
 
 app.Run();

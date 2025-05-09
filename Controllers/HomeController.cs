@@ -72,6 +72,16 @@ namespace AplicatieRutina.Controllers
                 return "Every day is a new chance to grow.";
             }
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult AddEvent([FromBody] CalendarEvent ev)
+        {
+            // Salveaz? în baza de date
+            _context.CalendarEvents.Add(ev);
+            _context.SaveChanges();
+            return Ok();
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

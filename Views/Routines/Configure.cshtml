@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Configure " + ViewBag.Type;
+}
+<h2>@ViewData["Title"]</h2>
+<form asp-action="Configure" method="post">
+    <input type="hidden" name="type" value="@ViewBag.Type" />
+    <div class="mb-3">
+        <label for="products">Products (comma-separated)</label>
+        <input class="form-control" type="text" name="products" id="products" placeholder="Cleanser, Serum, Moisturizer" />
+    </div>
+    <div class="mb-3">
+        <label for="scheduledTime">Preferred time (HH:MM)</label>
+        <input class="form-control" type="time" name="scheduledTime" id="scheduledTime" required />
+    </div>
+    <button class="btn btn-success">Save Routine</button>
+</form>

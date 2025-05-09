@@ -2,6 +2,7 @@
     ViewData["Title"] = "Welcome";
     var quote = ViewBag.Quote ?? "Stay motivated!";
     var date = DateTime.Today;
+    var selectedEvent = ViewBag.SelectedEvent as AplicatieRutina.Models.CalendarEvent;
 }
 
 <div class="container mt-5">
@@ -12,9 +13,47 @@
         <p class="text-muted">@date.ToString("dddd, MMMM dd, yyyy")</p>
     </div>
 
-    <!-- Calendar simplu -->
+    <!-- Afișare eveniment selectat timp de 5 secunde -->
+    @if (selectedEvent != null)
+    {
+        <div id="selected-event-message" class="alert alert-info text-center">
+            <strong>Selected Event:</strong> @selectedEvent.Description
+        </div>
+        <script>
+            setTimeout(() => {
+                const msg = document.getElementById('selected-event-message');
+                if (msg) msg.style.display = 'none';
+            }, 5000);
+        </script>
+    }
+    
+    <!-- Calendar + iconiță -->
     <div class="calendar mb-4 text-center">
-        <h4>📅 Today is: <span class="badge bg-info text-dark">@date.Day</span> <strong>@date.ToString("MMMM")</strong></h4>
+        <h4>
+            📅 Today is: <span class="badge bg-info text-dark">@date.Day</span> <strong>@date.ToString("MMMM")</strong>
+            <button id="calendarToggle" class="btn btn-outline-secondary btn-sm ms-2">📆</button>
+        </h4>
+        <div id="calendarContainer" style="display:none;" class="mt-3">
+            <input type="text" id="eventCalendar" placeholder="Click to select a date">
+        </div>
+    </div>
+
+    <!-- Form pentru adăugarea unui eveniment -->
+    <div id="eventForm" class="mt-3" style="display: none;">
+        <h5>Add an event for <span id="selectedDateDisplay"></span></h5>
+        <form id="eventSubmitForm">
+            <input type="hidden" id="selectedDate" />
+            <textarea id="eventDescription" class="form-control mb-2" placeholder="Write your event..."></textarea>
+            <button type="submit" class="btn btn-primary">Save Event</button>
+        </form>
+    </div>
+
+    <!-- Calendar: doar evenimentele viitoare -->
+    <div id="eventList" class="mt-4">
+        <h5>📋 Upcoming Events</h5>
+        <ul id="eventItems" class="list-group">
+            <!-- Populat prin JS -->
+        </ul>
     </div>
 
     <!-- Secțiunea de jurnal -->
@@ -25,5 +64,9 @@
             <button type="submit" class="btn btn-primary mt-2">Save Entry</button>
         </form>
     </div>
-
 </div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="~/js/calendar.js"></script>
+}

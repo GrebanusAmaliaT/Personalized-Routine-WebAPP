@@ -1,0 +1,37 @@
+﻿@model AplicatieRutina.Models.Calendar
+@{
+    ViewData["Title"] = "Calendar";
+}
+
+<div class="container mt-4">
+    <h2>📅 Calendar</h2>
+
+    <!-- Calendar (simplu, doar afișare date evenimente) -->
+    <div class="mb-4">
+        <ul class="list-group">
+            @foreach (var day in Model.CalendarDays)
+            {
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span>@day.Date.ToString("dddd, dd MMM yyyy")</span>
+                    <form asp-action="SelectEvent" method="post" class="mb-0">
+                        <input type="hidden" name="selectedDate" value="@day.Date.ToString("yyyy-MM-dd")" />
+                        <button type="submit" class="btn btn-sm btn-outline-primary">View Event</button>
+                    </form>
+                </li>
+            }
+        </ul>
+    </div>
+
+    <!-- Upcoming Events -->
+    <div>
+        <h4>📌 Upcoming Events</h4>
+        <ul class="list-group">
+            @foreach (var ev in Model.UpcomingEvents)
+            {
+                <li class="list-group-item">
+                    <strong>@ev.Description</strong> — @ev.Date.ToString("dddd, dd MMMM yyyy")
+                </li>
+            }
+        </ul>
+    </div>
+</div>

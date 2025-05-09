@@ -12,5 +12,13 @@ namespace AplicatieRutina.Models
         }
 
         public DbSet<UserProfile> UserProfiles { get; set; }
+
+        public DbSet<Post> Posts { get; set; }
+
+        public DbSet<Selfie> Selfies { get; set; }
+
+        public DbSet<CalendarEvent> CalendarEvents { get; set; }
+
+        public DbSet<Routine> Routines { get; set; }
     }
 }

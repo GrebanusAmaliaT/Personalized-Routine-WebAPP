@@ -1,0 +1,25 @@
+﻿@model List<Post>
+
+@foreach (var post in Model)
+{
+    <div class="card mt-3">
+        <div class="card-body">
+            <h6>
+                @(post.User?.UserName ?? "Anonymous")
+                <span class="text-muted">(@post.CreatedAt.ToShortDateString())</span>
+            </h6>
+            <p>@post.Content</p>
+            @if (!string.IsNullOrEmpty(post.ImagePath))
+            {
+                <img src="@post.ImagePath" class="img-fluid mt-2" />
+            }
+        </div>
+    </div>
+}
+
+<form asp-action="Create" enctype="multipart/form-data" method="post">
+    @Html.AntiForgeryToken()
+    <textarea name="Content" class="form-control" placeholder="Share your thoughts..." required></textarea>
+    <input type="file" name="Image" accept="image/*" class="form-control mt-2" />
+    <button type="submit" class="btn btn-success mt-2">Post</button>
+</form>
