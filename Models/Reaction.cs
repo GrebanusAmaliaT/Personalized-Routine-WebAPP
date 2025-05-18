@@ -2,17 +2,17 @@
 
 namespace AplicatieRutina.Models
 {
-    public class Post
+    public class Reaction
     {
         public int Id { get; set; }
-        public string UserId { get; set; }
-        public string Content { get; set; }
-        public string? ImagePath { get; set; }
+        public string Emoji { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now;
 
+        public string UserId { get; set; }
         public IdentityUser User { get; set; }
 
-        public ICollection<Reaction> Reactions { get; set; }
+        public int PostId { get; set; }
+        public Post Post { get; set; }
     }
 
 }

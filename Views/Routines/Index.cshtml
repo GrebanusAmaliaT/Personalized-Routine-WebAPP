@@ -8,4 +8,14 @@
     <a class="btn btn-outline-info" asp-action="Configure" asp-route-type="Exfoliation">🧽 Exfoliation</a>
 </div>
 
+<script>
+    const routines = @Html.Raw(ViewBag.RoutinesJson);
+</script>
 
+<button onclick="Notification.requestPermission().then(() => showRoutineNotification('Test'))">
+    🔔 Test Notification
+</button>
+
+@section Scripts {
+    <script src="~/js/notifications.js"></script>
+}

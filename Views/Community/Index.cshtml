@@ -1,5 +1,16 @@
 ﻿@model List<Post>
 
+<div class="community-intro text-center mt-5 mb-4">
+    <h2 class="fw-semibold text-secondary">✨ Share your thoughts, moments, or kind energy with our community ✨</h2>
+    <p class="text-muted">
+        Whether it's a cheerful message, a quiet thought or a lovely photo — your words can brighten someone's day.
+       <br /> 
+       <strong style="font-size:1rem; ">This is a safe space! No judgment, only support 💜</strong>
+    </p>
+</div>
+
+
+
 @foreach (var post in Model)
 {
     <div class="card mt-3">
@@ -13,6 +24,21 @@
             {
                 <img src="@post.ImagePath" class="img-fluid mt-2" />
             }
+
+            <div class="reactions mt-2">
+                @{
+                    var emojis = new[] { "❤️", "✨", "😊", "😢" };
+                    foreach (var emoji in emojis)
+                    {
+                        var count = post.Reactions?.Count(r => r.Emoji == emoji) ?? 0;
+                        <button class="reaction-btn" data-post-id="@post.Id" data-emoji="@emoji">
+                            @emoji <span>@count</span>
+                        </button>
+                    }
+                }
+            </div>
+
+
         </div>
     </div>
 }
@@ -23,3 +49,36 @@
     <input type="file" name="Image" accept="image/*" class="form-control mt-2" />
     <button type="submit" class="btn btn-success mt-2">Post</button>
 </form>
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/community.css" asp-append-version="true" />
+}
+
+@section Scripts {
+    <script>
+        document.querySelectorAll('.reaction-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const postId = btn.dataset.postId;
+                const emoji = btn.dataset.emoji;
+                const span = btn.querySelector('span');
+
+                fetch('/api/reaction', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
+                    },
+                    body: JSON.stringify({ postId, emoji })
+                })
+                .then(res => {
+                    if (!res.ok) throw new Error();
+                    return res.json();
+                })
+                .then(data => {
+                    span.innerText = data.count;
+                })
+                .catch(() => alert("You already reacted with this emoji 💜"));
+            });
+        });
+    </script>
+}

@@ -1,0 +1,150 @@
+﻿
+body {
+    background-color: #fff;
+    font-family: 'Comic Neue', cursive, sans-serif;
+    color: #5a004f;
+    padding-bottom: 50px;
+}
+
+/* Cardul pentru fiecare postare */
+.card {
+    border: 2px solid #f8c6dc;
+    border-radius: 15px;
+    background-color: #fff0f6;
+    box-shadow: 0 4px 10px rgba(255, 192, 203, 0.2);
+    padding: 15px;
+}
+
+    /* Header autor + dată */
+    .card h6 {
+        color: #d63384;
+        font-weight: bold;
+    }
+
+    /* Text post */
+    .card p {
+        font-size: 1.1rem;
+        margin-top: 10px;
+    }
+
+    /* Imagine post */
+    .card img {
+        border-radius: 10px;
+        max-height: 300px;
+        object-fit: cover;
+        box-shadow: 0 0 10px rgba(255, 128, 170, 0.3);
+    }
+
+/* Formular postare */
+form {
+    margin-top: 2rem;
+    padding: 20px;
+    border: 2px solid #f8c6dc;
+    background-color: #fff0f6;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(255, 192, 203, 0.2);
+}
+
+    /* Textarea + file input */
+    form textarea,
+    form input[type="file"] {
+        border: 1px solid #f4a8c2;
+        border-radius: 10px;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    /* Buton postare */
+    form button {
+        background-color: #f497b5;
+        border: none;
+        color: white;
+        font-weight: bold;
+        border-radius: 20px;
+        padding: 10px 20px;
+        transition: background-color 0.3s ease;
+    }
+
+        form button:hover {
+            background-color: #e85d9e;
+        }
+
+    /* Stil buton POST */
+    form button {
+        background-color: #a564c9; /* mov elegant */
+        color: white;
+        border: none;
+        font-weight: bold;
+        padding: 10px 20px;
+        border-radius: 20px;
+        transition: background-color 0.3s ease;
+        font-family: 'Comic Neue', cursive;
+    }
+
+        form button:hover {
+            background-color: #9245b8;
+        }
+
+/* Stil input de tip file */
+input[type="file"] {
+    background-color: #f8edff;
+    border: 2px solid #d8b4ef;
+    color: #5c3a6b;
+    padding: 8px;
+    border-radius: 12px;
+    font-family: 'Comic Neue', cursive;
+    font-size: 0.95rem;
+}
+
+    input[type="file"]::file-selector-button {
+        background-color: #a564c9;
+        color: white;
+        border: none;
+        padding: 8px 14px;
+        border-radius: 15px;
+        font-weight: bold;
+        cursor: pointer;
+        font-family: 'Comic Neue', cursive;
+    }
+
+        input[type="file"]::file-selector-button:hover {
+            background-color: #9245b8;
+        }
+
+.community-intro {
+    background-color: #fff0f9;
+    padding: 25px;
+    border: 2px dashed #dda8d3;
+    border-radius: 20px;
+    box-shadow: 0 0 12px rgba(220, 140, 200, 0.1);
+    font-family: 'Comic Neue', cursive;
+}
+
+    .community-intro h4 {
+        color: #a84575;
+    }
+
+    .community-intro p {
+        font-size: 1rem;
+        color: #6b4069;
+    }
+.reactions {
+    margin-top: 10px;
+}
+
+.reaction-btn {
+    background-color: #fff0f9;
+    border: 1px solid #f3b4dc;
+    border-radius: 20px;
+    margin-right: 5px;
+    padding: 6px 12px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-family: 'Comic Neue', cursive;
+    transition: transform 0.1s ease-in-out;
+}
+
+    .reaction-btn:hover {
+        transform: scale(1.1);
+        background-color: #ffe3f0;
+    }

@@ -22,7 +22,12 @@ namespace AplicatieRutina.Controllers
 
         public IActionResult Index()
         {
-            var posts = _context.Posts.Include(p => p.User).OrderByDescending(p => p.CreatedAt).ToList();
+            var posts = _context.Posts
+                .Include(p => p.User)
+                .Include(p => p.Reactions)
+                .OrderByDescending(p => p.CreatedAt)
+                .ToList();
+
             return View(posts);
         }
 
@@ -49,6 +54,7 @@ namespace AplicatieRutina.Controllers
                 Content = content,
                 ImagePath = path
             };
+
 
             _context.Posts.Add(post);
             await _context.SaveChangesAsync();
