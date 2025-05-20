@@ -37,6 +37,14 @@
                     }
                 }
             </div>
+                @if (User.Identity?.Name == post.User?.UserName)
+                {
+                    <form asp-action="Delete" method="post" class="mt-2 text-end">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="id" value="@post.Id" />
+                        <button type="submit" class="btn btn-delete-post btn-sm">🗑️ Delete</button>
+                    </form>
+                }
 
         </div>
     </div>

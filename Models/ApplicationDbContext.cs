@@ -26,13 +26,13 @@ namespace AplicatieRutina.Models
                 .HasOne(r => r.Post)
                 .WithMany(p => p.Reactions)
                 .HasForeignKey(r => r.PostId)
-                .OnDelete(DeleteBehavior.Restrict); // sau NoAction
+                .OnDelete(DeleteBehavior.Cascade);  // sau NoAction
 
             modelBuilder.Entity<Reaction>()
                 .HasOne(r => r.User)
                 .WithMany()
                 .HasForeignKey(r => r.UserId)
-                .OnDelete(DeleteBehavior.Restrict); // sau NoAction
+                .OnDelete(DeleteBehavior.Cascade);  // sau NoAction
         }
     }
 }

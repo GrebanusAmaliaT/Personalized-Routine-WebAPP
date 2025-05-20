@@ -34,6 +34,11 @@
                 <div class="selfie-card">
                     <img src="@selfie.ImagePath" class="img-fluid rounded shadow-sm" alt="Selfie from @selfie.UploadDate.ToShortDateString()" />
                     <small class="d-block text-muted text-center">@selfie.UploadDate.ToShortDateString()</small>
+
+                    <form asp-action="Delete" method="post" class="text-center mt-2">
+                        <input type="hidden" name="id" value="@selfie.Id" />
+                        <button type="submit" class="btn btn-delete btn-sm">🗑️ Delete</button>
+                    </form>
                 </div>
             </div>
         }

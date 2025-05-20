@@ -75,5 +75,21 @@ namespace AplicatieRutina.Controllers
 
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var selfie = await _context.Selfies.FindAsync(id);
+            if (selfie == null)
+                return NotFound();
+
+            // Dacă vrei, verifici și dacă aparține userului curent
+
+            _context.Selfies.Remove(selfie);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+
     }
 }

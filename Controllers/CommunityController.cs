@@ -61,6 +61,32 @@ namespace AplicatieRutina.Controllers
 
             return RedirectToAction("Index");
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var post = await _context.Posts
+                  .Include(p => p.Reactions) // 👈 foarte important
+                  .FirstOrDefaultAsync(p => p.Id == id);
+            
+            var userId = _userManager.GetUserId(User);
+
+            if (post == null)
+                return NotFound();
+
+            // Verificare autor (optional dar recomandat)
+            if (post.UserId != userId)
+                return Forbid();
+            if (post.Reactions != null && post.Reactions.Any())
+            {
+                _context.Reactions.RemoveRange(post.Reactions);
+            }
+            _context.Posts.Remove(post);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index");
+        }
+
     }
 
 }
