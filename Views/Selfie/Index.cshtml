@@ -1,28 +1,40 @@
 ﻿@model List<Selfie>
-
 @{
     ViewData["Title"] = "Daily Selfies";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container mt-4">
-    <h2 class="mb-4">📸 Upload Your Daily Selfie</h2>
+<link rel="stylesheet" href="~/css/selfie.css" />
 
-    <form asp-action="Upload" method="post" enctype="multipart/form-data">
+<div class="container py-4">
+    <div class="text-center mb-4">
+        <h2 class="fw-bold text-pink">📸 Upload Your Daily Selfie</h2>
+        <p class="text-muted">Track your skincare journey every day 💖</p>
+    </div>
+
+    <form asp-action="Upload" method="post" enctype="multipart/form-data" class="bg-white p-4 rounded shadow-sm mb-4">
         <div class="mb-3">
             <input type="file" name="Image" accept="image/*" class="form-control" required />
         </div>
-        <button type="submit" class="btn btn-primary">Upload</button>
+        <button type="submit" class="btn btn-mov w-100">Upload</button>
     </form>
 
-    <hr class="my-4" />
+    @if (ViewBag.AnalysisResult != null)
+    {
+        <div class="alert alert-info pastel-border text-center">@ViewBag.AnalysisResult</div>
+    }
 
-    <h4 class="mb-3">🧩 Your Visual Journey</h4>
+    <hr class="my-4 pastel-line" />
+
+    <h4 class="mb-3 text-center text-pink">🧩 Your Visual Journey</h4>
     <div class="row">
         @foreach (var selfie in Model)
         {
             <div class="col-md-3 col-sm-4 col-6 mb-3">
-                <img src="@selfie.ImagePath" class="img-fluid rounded shadow-sm" alt="Selfie from @selfie.UploadDate.ToShortDateString()" />
-                <small class="d-block text-muted text-center">@selfie.UploadDate.ToShortDateString()</small>
+                <div class="selfie-card">
+                    <img src="@selfie.ImagePath" class="img-fluid rounded shadow-sm" alt="Selfie from @selfie.UploadDate.ToShortDateString()" />
+                    <small class="d-block text-muted text-center">@selfie.UploadDate.ToShortDateString()</small>
+                </div>
             </div>
         }
     </div>

@@ -65,26 +65,9 @@ namespace AplicatieRutina.Controllers
                 return RedirectToAction("Edit", new { id = existingProfile.Id });
             }
 
-            return View();
+            return RedirectToAction("CreateName", "StepwiseProfile");
         }
 
-        // POST: UserProfiles/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(UserProfile userProfile)
-        {
-            if (ModelState.IsValid)
-            {
-                userProfile.UserId = _userManager.GetUserId(User);
-
-                _context.Add(userProfile);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(userProfile);
-        }
 
         // GET: UserProfiles/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -168,14 +151,24 @@ namespace AplicatieRutina.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var userProfile = await _context.UserProfiles.FindAsync(id);
-            if (userProfile != null)
+            var currentUserId = _userManager.GetUserId(User);
+
+            if (userProfile == null)
             {
-                _context.UserProfiles.Remove(userProfile);
+                return NotFound();
             }
 
+            if (userProfile.UserId != currentUserId)
+            {
+                return Forbid();
+            }
+
+            _context.UserProfiles.Remove(userProfile);
             await _context.SaveChangesAsync();
+
             return RedirectToAction(nameof(Index));
         }
+
 
         private bool UserProfileExists(int id)
         {

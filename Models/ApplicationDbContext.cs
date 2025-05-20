@@ -16,8 +16,8 @@ namespace AplicatieRutina.Models
         public DbSet<CalendarEvent> CalendarEvents { get; set; }
         public DbSet<Routine> Routines { get; set; }
         public DbSet<Reaction> Reactions { get; set; }
+        public DbSet<JournalEntry> JournalEntries { get; set; }
 
-        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

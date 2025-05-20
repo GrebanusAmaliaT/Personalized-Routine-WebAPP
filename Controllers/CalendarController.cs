@@ -15,26 +15,26 @@ namespace AplicatieRutina.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult AddEvent([FromBody] CalendarEvent ev)
+        public async Task<IActionResult> AddEvent([FromBody] CalendarEvent ev)
         {
-            if (string.IsNullOrWhiteSpace(ev.Description)) return BadRequest();
+            if (string.IsNullOrWhiteSpace(ev.Description) || ev.Date == default)
+                return BadRequest();
+
             _context.CalendarEvents.Add(ev);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return Ok();
         }
 
-        [HttpGet]
-        [HttpGet]
-        public IActionResult GetEvents()
+        public IActionResult Index()
         {
-            var today = DateTime.Today;
             var events = _context.CalendarEvents
-                .Where(e => e.Date >= today)
+                .Where(e => e.Date > DateTime.Now)
                 .OrderBy(e => e.Date)
                 .ToList();
 
-            return Json(events);
+            return View(events);
         }
+
 
     }
 }

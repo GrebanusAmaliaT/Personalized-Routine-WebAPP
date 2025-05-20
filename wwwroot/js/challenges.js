@@ -50,26 +50,37 @@
             badgeMessage.textContent = "🥇 Gold badge unlocked!";
         } else if (count >= 7) {
             badgeMessage.textContent = "🥈 Silver badge unlocked!";
+        } else if (count >= 5) {
+            badgeMessage.textContent = "🏅 You've earned the 5-day streak badge!";
         } else if (count >= 3) {
-            badgeMessage.textContent = "🥉 Bronze badge unlocked!";
+            badgeMessage.textContent = "🥉 Bronze badge unlocked!";  
+        }else if (count >= 1) {
+            badgeMessage.textContent = "👏 Good start! "
         } else {
-            badgeMessage.textContent = "";
+            console.log("AM AJUNS AICI" )
+            badgeMessage.textContent = "There's a long journey coming ahead of you!";
         }
 
+        Object.keys(stored).sort().forEach(date => {
+            const li = document.createElement("li");
+            li.className = "list-group-item";
+            li.textContent = `✅ ${date}`;
+            document.getElementById("historyList").appendChild(li);
+        });
     // ascunde butonul dacă deja a fost bifat
     if (stored[today]) {
         doneButton.disabled = true;
-    status.textContent = "✅ Already completed today. Great job!";
+        status.textContent = "✅ Already completed today. Great job!";
         }
 
         doneButton.addEventListener("click", () => {
         stored[today] = true;
-    localStorage.setItem(storageKey, JSON.stringify(stored));
+        localStorage.setItem(storageKey, JSON.stringify(stored));
 
-    const newCount = Object.keys(stored).length;
-    badgeCounter.textContent = `🌟 ${newCount} self-care ${newCount === 1 ? "victory" : "victories"}!`;
-    doneButton.disabled = true;
-    status.textContent = "✅ Challenge saved. Keep it up!";
+        const newCount = Object.keys(stored).length;
+        badgeCounter.textContent = `🌟 ${newCount} self-care ${newCount === 1 ? "victory" : "victories"}!`;
+        doneButton.disabled = true;
+        status.textContent = "✅ Challenge saved. Keep it up!";
         });
     });
 
@@ -79,13 +90,5 @@ document.getElementById("resetProgress").addEventListener("click", () => {
         location.reload();
     }
 });
-
-Object.keys(stored).sort().forEach(date => {
-    const li = document.createElement("li");
-    li.className = "list-group-item";
-    li.textContent = `✅ ${date}`;
-    document.getElementById("historyList").appendChild(li);
-});
-
 
 

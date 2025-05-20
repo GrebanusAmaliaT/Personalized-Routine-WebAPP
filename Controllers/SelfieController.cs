@@ -1,4 +1,5 @@
 ﻿using AplicatieRutina.Models;
+using AplicatieRutina.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -11,14 +12,15 @@ namespace AplicatieRutina.Controllers
         private readonly ApplicationDbContext _context;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IWebHostEnvironment _env;
+        private readonly ImageAnalysisService _analyzer;
 
-        public SelfieController(ApplicationDbContext context, UserManager<IdentityUser> userManager, IWebHostEnvironment env)
+        public SelfieController(ApplicationDbContext context, UserManager<IdentityUser> userManager, IWebHostEnvironment env, ImageAnalysisService analyzer)
         {
             _context = context;
             _userManager = userManager;
             _env = env;
+            _analyzer = analyzer;
         }
-
         public IActionResult Index()
         {
             var userId = _userManager.GetUserId(User);
@@ -51,6 +53,9 @@ namespace AplicatieRutina.Controllers
                 await Image.CopyToAsync(stream);
             }
 
+            var analysis = _analyzer.Analyze(filePath);
+            ViewBag.AnalysisResult = $"Redness: {analysis.redness}, Brightness: {analysis.brightness}, Dark Spots: {analysis.darkness}";
+
             var selfie = new Selfie
             {
                 UserId = userId,
@@ -61,7 +66,14 @@ namespace AplicatieRutina.Controllers
             _context.Selfies.Add(selfie);
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("Index");
+            var selfies = _context.Selfies
+                .Where(s => s.UserId == userId)
+                .OrderByDescending(s => s.UploadDate)
+                .ToList();
+
+            return View("Index", selfies);
+
         }
+
     }
 }

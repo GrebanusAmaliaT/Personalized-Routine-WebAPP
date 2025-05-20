@@ -1,4 +1,5 @@
 using AplicatieRutina.Models;
+using AplicatieRutina.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,6 +15,8 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddHttpClient();
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+builder.Services.AddSingleton<ImageAnalysisService>();
+
 
 var app = builder.Build();
 

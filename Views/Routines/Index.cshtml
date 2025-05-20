@@ -2,19 +2,107 @@
     ViewData["Title"] = "Choose Your Routine";
 }
 <h2>@ViewData["Title"]</h2>
+
+<link rel="stylesheet" href="~/css/routines.css" />
+
 <div class="d-flex flex-column gap-2">
     <a class="btn btn-outline-primary" asp-action="Configure" asp-route-type="Morning">🌞 Morning Routine</a>
     <a class="btn btn-outline-secondary" asp-action="Configure" asp-route-type="Evening">🌙 Evening Routine</a>
     <a class="btn btn-outline-info" asp-action="Configure" asp-route-type="Exfoliation">🧽 Exfoliation</a>
 </div>
 
+
+<hr class="my-5" />
+
+<div class="article-section bg-white p-4 rounded shadow-sm" style="border: 2px solid #ffe4e1;">
+    <h4 class="mb-3" style="color: #ba55d3; font-weight: 600;">🧴 Understanding Skin Types & Recommended Products</h4>
+    <p><strong>Dry Skin:</strong> Often feels tight and may flake. Use hydrating cleansers, thick moisturizers (like creams with hyaluronic acid), and nourishing serums.</p>
+    <p><strong>Oily Skin:</strong> Prone to shine and breakouts. Use foaming cleansers, oil-free moisturizers, and products with salicylic acid or niacinamide.</p>
+    <p><strong>Combination Skin:</strong> Oily in the T-zone, dry elsewhere. Use balancing toners and light moisturizers; treat zones separately.</p>
+    <p><strong>Sensitive Skin:</strong> Easily irritated. Choose fragrance-free, hypoallergenic products, and soothing ingredients like aloe or chamomile.</p>
+    <p><strong>Normal Skin:</strong> Balanced, few issues. Maintain with gentle cleansers, lightweight moisturizer, and SPF.</p>
+    <p class="text-muted mt-3">💡 Tip: Always patch-test new products and adjust your routine to the season.</p>
+</div>
+
+<div class="article-section bg-white p-4 rounded shadow-sm" style="border: 2px solid #ffe4e1;">
+    <h2 class="mb-3" style="color: #ba55d3; font-weight: 600;">📘 Ghiduri utile despre tipurile de ten</h2>
+    <p class="text-muted">Învață cum să-ți alegi produsele în funcție de tipul tău de ten.</p>
+
+    
+            <iframe src="https://www.scribd.com/embeds/73920410/content?start_page=1&view_mode=scroll&access_key=key-1d65pzycpgrylu2zjfb8"
+                    width="100%" height="600px" frameborder="0"
+                    allowfullscreen></iframe>
+
+    <div class="row align-items-start article-section p-4 rounded shadow-sm">
+        <!-- Articole în stânga -->
+
+        <h2 class="mb-4" style="color: #ba55d3;"><span style="font-size: 1.8rem;">📚</span> Articole utile:</h2>
+        <div class="col-md-7">
+            <ul class="list-unstyled resource-links">
+                <li class="mb-4">
+                    <a href="https://www.onconect.ro/blog/ingrijirea-pielii/tipurile-de-ten-si-produsele-recomandate-pentru-ingrijire-pe-termen" target="_blank" class="resource-card">
+                        <div class="icon">📖</div>
+                        <div class="text">
+                            <h6>Tipurile de ten și produsele recomandate</h6>
+                            <p>Ghid esențial pentru o rutină corectă.</p>
+                        </div>
+                    </a>
+                </li>
+                <li class="mb-4">
+                    <a href="https://www.vichy.ro/vichy-mag/Tipuri-de-ten-Caracteristici-si-sfaturi-de-ingrijire-pentru-fiecare-tip-de-ten-in-parte/vmag73647.aspx" target="_blank" class="resource-card">
+                        <div class="icon">💡</div>
+                        <div class="text">
+                            <h6>Caracteristici și sfaturi de la Vichy</h6>
+                            <p>Descoperă cum îți îngrijești tipul tău de ten.</p>
+                        </div>
+                    </a>
+                </li>
+                <li class="mb-4">
+                    <a href="https://www.paulaschoice.com/expert-advice/skincare-advice/skin-types" target="_blank" class="resource-card">
+                        <div class="icon">🌿</div>
+                        <div class="text">
+                            <h6>Skin Types – Paula’s Choice</h6>
+                            <p>Identifică-ți tipul de piele și alege corect produsele.</p>
+                        </div>
+                    </a>
+                </li>
+                <li class="mb-4">
+                    <a href="https://www.dermstore.com/blog/top_ten/skin-care-routine-steps/" target="_blank" class="resource-card">
+                        <div class="icon">🧴</div>
+                        <div class="text">
+                            <h6>10 pași în rutina de skincare</h6>
+                            <p>Structură completă pentru o piele sănătoasă.</p>
+                        </div>
+                    </a>
+                </li>
+                <li class="mb-4">
+                    <a href="https://www.healthline.com/health/beauty-skin-care/best-skincare-routine" target="_blank" class="resource-card">
+                        <div class="icon">🔍</div>
+                        <div class="text">
+                            <h6>The Best Skincare Routine</h6>
+                            <p>Cercetare și sfaturi verificate medical.</p>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <br /> <br /> 
+        <!-- Imagine în dreapta -->
+        <div class="col-md-5 d-flex justify-content-center align-items-start">
+            <img src="/images/routine-icon.png" class="img-fluid rounded shadow" alt="Skincare guide" style="max-height: 500px;">
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+
 <script>
     const routines = @Html.Raw(ViewBag.RoutinesJson);
 </script>
 
-<button onclick="Notification.requestPermission().then(() => showRoutineNotification('Test'))">
-    🔔 Test Notification
-</button>
+
 
 @section Scripts {
     <script src="~/js/notifications.js"></script>

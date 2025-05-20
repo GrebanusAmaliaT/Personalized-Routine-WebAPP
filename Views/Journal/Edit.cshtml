@@ -1,0 +1,28 @@
+﻿@model AplicatieRutina.Models.JournalEntry
+@{
+    ViewData["Title"] = "Edit Journal Entry";
+}
+
+<link rel="stylesheet" href="~/css/journal.css" />
+
+<div class="journal-edit-container">
+    <h2>✏️ Edit Entry for @Model.Date.ToString("dddd, dd MMMM yyyy")</h2>
+
+    <form asp-action="Edit" method="post">
+        @Html.AntiForgeryToken()
+        <input type="hidden" asp-for="Id" />
+
+        <div class="form-group mb-3">
+            <label asp-for="Content" class="form-label">Your thoughts</label>
+            <textarea asp-for="Content" class="form-control" rows="6"></textarea>
+            <span asp-validation-for="Content" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">💾 Save</button>
+        <a asp-action="Summary" class="btn btn-secondary ms-2">↩️ Back</a>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

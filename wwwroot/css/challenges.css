@@ -1,0 +1,118 @@
+﻿/* Stil general pentru întreaga pagină */
+body {
+    background: linear-gradient(145deg, #ffe6f0, #f2d0f5);
+    color: #5a5a5a;
+    font-family: 'Segoe UI', sans-serif;
+    padding-bottom: 4rem;
+}
+
+/* Containerul principal pentru provocări */
+.challenge-card {
+    background-color: #fff;
+    border: 2px solid #ffe0f0;
+    border-radius: 1.5rem;
+    padding: 2.5rem;
+    max-width: 650px;
+    margin: 0 auto;
+    box-shadow: 0 8px 24px rgba(255, 192, 203, 0.2);
+}
+
+/* Titlul principal */
+#dailyChallenge h2 {
+    color: #e91e63;
+    font-weight: bold;
+}
+
+/* Textul provocării zilnice */
+#challengeText {
+    font-size: 1.1rem;
+    color: #c2185b;
+}
+
+/* Butonul de completare a provocării */
+#doneButton {
+    background-color: #ff69b4;
+    border-color: #ff69b4;
+    color: white;
+    font-weight: bold;
+    transition: all 0.2s ease-in-out;
+    border-radius: 50px;
+    padding: 0.5rem 1.5rem;
+}
+
+    #doneButton:hover {
+        background-color: #ff85c1;
+        transform: scale(1.05);
+    }
+
+/* Text de confirmare a statusului */
+#challengeStatus {
+    color: #ad1457;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* Numărul de insigne obținute */
+#badgeCounter {
+    background-color: #f48fb1;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 1rem;
+}
+
+/* Lista cu provocări finalizate */
+#historyList {
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
+.list-group-item {
+    border: none;
+    border-left: 5px solid #f06292;
+    background-color: #fff0f5;
+    margin-bottom: 0.5rem;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+}
+
+/* Bara de progres */
+.progress {
+    max-width: 600px;
+    margin: 2rem auto;
+    background-color: #ffe4ec;
+    border-radius: 50px;
+    height: 25px;
+}
+
+.progress-bar {
+    background-color: #ec407a !important;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 50px;
+}
+
+/* Textul de sub progres */
+#earnedBadge {
+    text-align: center;
+    color: #d81b60;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* Butonul de resetare */
+#resetProgress {
+    display: block;
+    margin: 1rem auto 0;
+    border-radius: 50px;
+    border-color: #f06292;
+    color: #f06292;
+    font-weight: 500;
+    padding: 0.4rem 1.2rem;
+    transition: background-color 0.2s ease-in-out;
+}
+
+    #resetProgress:hover {
+        background-color: #fce4ec;
+    }

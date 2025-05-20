@@ -1,6 +1,14 @@
 ﻿@{
     ViewData["Title"] = "Select Your Skin Type";
 }
+<link rel="stylesheet" href="~/css/form.css" asp-append-version="true" />
+
+<div class="profile">
+<div class="progress-container">
+    <div class="progress-bar" style="width: 80%;"></div>
+</div>
+
+<a asp-action="CreateHairType" class="back-btn">⟵ Back</a>
 
 <h2>@ViewData["Title"]</h2>
 
@@ -16,11 +24,7 @@
             <option value="Don't know yet">Don't know yet</option>
         </select>
     </div>
-    <button type="submit" class="btn btn-primary">Continue</button>
+        <br />
+        <button type="submit" class="btn btn-primary">Continue</button>
 </form>
-
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-}
+</div>

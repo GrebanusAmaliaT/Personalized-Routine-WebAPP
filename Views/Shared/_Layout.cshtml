@@ -16,6 +16,9 @@
     
     @RenderSection("Styles", required: false)
 
+    @using Microsoft.AspNetCore.Identity
+    @using Microsoft.AspNetCore.Authorization
+
 </head>
 <body>
     <header>
@@ -57,8 +60,15 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-
                     </ul>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                        
+                              <form asp-area="Identity" asp-page="/Account/Logout" method="post" class="log">
+                                   <button type="submit" class="btn btn-outline-danger btn-sm"> Log out</button>
+                              </form>
+                         
+                        }
                 </div>
             </div>
         </nav>

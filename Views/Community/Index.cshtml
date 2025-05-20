@@ -1,5 +1,6 @@
 ﻿@model List<Post>
 
+<div class="pagina">
 <div class="community-intro text-center mt-5 mb-4">
     <h2 class="fw-semibold text-secondary">✨ Share your thoughts, moments, or kind energy with our community ✨</h2>
     <p class="text-muted">
@@ -8,7 +9,6 @@
        <strong style="font-size:1rem; ">This is a safe space! No judgment, only support 💜</strong>
     </p>
 </div>
-
 
 
 @foreach (var post in Model)
@@ -38,7 +38,6 @@
                 }
             </div>
 
-
         </div>
     </div>
 }
@@ -49,10 +48,9 @@
     <input type="file" name="Image" accept="image/*" class="form-control mt-2" />
     <button type="submit" class="btn btn-success mt-2">Post</button>
 </form>
+</div>
 
-@section Styles {
-    <link rel="stylesheet" href="~/css/community.css" asp-append-version="true" />
-}
+<link rel="stylesheet" href="~/css/community.css" asp-append-version="true" />
 
 @section Scripts {
     <script>

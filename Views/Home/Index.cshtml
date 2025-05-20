@@ -1,4 +1,9 @@
 ﻿<link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+<link href="https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="~/css/lunaria.css" />
+
+@model List<AplicatieRutina.Models.CalendarEvent>
+
 
 <div class="home-page">
     @{
@@ -13,6 +18,7 @@
     <!-- Citat motivațional -->
     <div class="text-center mb-4">
         <h2 class="fw-bold">@quote</h2>
+
         <p class="text-muted">@date.ToString("dddd, MMMM dd, yyyy")</p>
     </div>
 
@@ -54,18 +60,26 @@
     <!-- Calendar: doar evenimentele viitoare -->
     <div id="eventList" class="mt-4">
         <h5>📋 Upcoming Events</h5>
-        <ul id="eventItems" class="list-group">
-            <!-- Populat prin JS -->
-        </ul>
+            <div id="eventList" class="mt-4">
+                <ul class="list-group">
+                    @foreach (var ev in Model)
+                    {
+                        <li class="list-group-item">
+                            @ev.Date.ToString("dd.MM.yyyy") - @ev.Description
+                        </li>
+                    }
+                </ul>
+            </div>
+
     </div>
 
     <!-- Secțiunea de jurnal -->
     <div class="journal-section">
         <h4>📝 Your Personal Journal</h4>
-        <form method="post" asp-action="SaveJournalEntry">
-            <textarea name="entryText" class="form-control" rows="5" placeholder="Write here..."></textarea>
-            <button type="submit" class="btn btn-primary mt-2">Save Entry</button>
-        </form>
+            <form method="post" asp-controller="Journal" asp-action="SaveEntry">
+                <textarea name="entryText" class="form-control" rows="5" placeholder="Write here..."></textarea>
+                <button type="submit" class="btn btn-primary mt-2">Save Entry</button>
+            </form>
     </div>
 </div>
 

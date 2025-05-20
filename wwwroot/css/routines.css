@@ -1,0 +1,111 @@
+﻿
+body {
+    background: linear-gradient(145deg, #ffe6f0, #f2d0f5);
+    font-family: 'Segoe UI', sans-serif;
+    color: #4b004b;
+}
+
+h2, h4 {
+    color: #ba55d3;
+    font-weight: bold;
+}
+
+.d-flex.flex-column.gap-2 a {
+    border: 2px solid #f3b0d4;
+    border-radius: 20px;
+    background: #fff;
+    color: #c94f7c;
+    font-weight: 600;
+    padding: 12px;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(255, 182, 193, 0.2);
+    text-align: center;
+}
+
+    .d-flex.flex-column.gap-2 a:hover {
+        background-color: #ffe0f0;
+        color: #8b2e5f;
+        transform: scale(1.02);
+    }
+
+.article-section {
+    background-color: #fffafc;
+    border-left: 5px solid #f9c3dc;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(255, 182, 193, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+    .article-section:hover {
+        box-shadow: 0 0 15px rgba(255, 192, 203, 0.4);
+    }
+
+iframe {
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(220, 120, 180, 0.2);
+    margin-top: 1rem;
+}
+
+ul {
+    margin-top: 1.5rem;
+    padding-left: 1.2rem;
+}
+
+    ul li a {
+        color: #ba55d3;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+        ul li a:hover {
+            text-decoration: underline;
+            color: #8a2be2;
+        }
+
+/* Efect de fade-in pentru intreaga pagina */
+body {
+    opacity: 0;
+    animation: fadeIn 1.2s ease forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.resource-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+    border-radius: 12px;
+    background-color: #fff0f8;
+    box-shadow: 0 4px 12px rgba(186, 85, 211, 0.15);
+    transition: transform 0.2s, background-color 0.3s;
+    color: #5e1362;
+    text-decoration: none;
+}
+
+    .resource-card:hover {
+        transform: scale(1.02);
+        background-color: #ffe4f1;
+    }
+
+    .resource-card .icon {
+        font-size: 1.8rem;
+    }
+
+    .resource-card .text h6 {
+        margin: 0;
+        font-weight: 600;
+    }
+
+    .resource-card .text p {
+        margin: 4px 0 0;
+        font-size: 0.9rem;
+        color: #a65aad;
+    }

@@ -1,0 +1,38 @@
+﻿body {
+    background: #fff6fa;
+}
+
+.text-pink {
+    color: #e75480;
+}
+
+.btn-mov {
+    background-color: #caa6ff;
+    color: white;
+    font-weight: bold;
+    border: none;
+    transition: 0.3s ease-in-out;
+}
+
+    .btn-mov:hover {
+        background-color: #a678e2;
+        transform: scale(1.05);
+    }
+
+.pastel-line {
+    border-color: #f4c2c2;
+}
+
+.pastel-border {
+    border: 2px dashed #d8bfd8;
+    background-color: #fff0f5;
+}
+
+.selfie-card {
+    transition: transform 0.2s ease-in-out;
+}
+
+    .selfie-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }

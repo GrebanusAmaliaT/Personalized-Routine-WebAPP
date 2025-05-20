@@ -1,16 +1,30 @@
 ﻿@{
     ViewData["Title"] = "Configure " + ViewBag.Type;
 }
-<h2>@ViewData["Title"]</h2>
-<form asp-action="Configure" method="post">
-    <input type="hidden" name="type" value="@ViewBag.Type" />
-    <div class="mb-3">
-        <label for="products">Products (comma-separated)</label>
-        <input class="form-control" type="text" name="products" id="products" placeholder="Cleanser, Serum, Moisturizer" />
-    </div>
-    <div class="mb-3">
-        <label for="scheduledTime">Preferred time (HH:MM)</label>
-        <input class="form-control" type="time" name="scheduledTime" id="scheduledTime" required />
-    </div>
-    <button class="btn btn-success">Save Routine</button>
-</form>
+
+
+<link rel="stylesheet" href="~/css/configure.css" />
+
+<div class="routine-config-container mt-5 p-4 rounded shadow">
+    <h2 class="mb-4 title">@ViewData["Title"]</h2>
+
+    <form asp-action="Configure" method="post">
+        <input type="hidden" name="type" value="@ViewBag.Type" />
+
+        <div class="form-group mb-4">
+            <label for="products" class="form-label">✨ Products (comma-separated)</label>
+            <input class="form-control custom-input" type="text" name="products" id="products" placeholder="Cleanser, Serum, Moisturizer" />
+        </div>
+
+        <div class="form-group mb-4">
+            <label for="scheduledTime" class="form-label">⏰ Preferred time (HH:MM)</label>
+            <input class="form-control custom-input" type="time" name="scheduledTime" id="scheduledTime" required />
+        </div>
+
+        <button class="btn btn-save w-100">💾 Save Routine</button>
+    </form>
+
+    <!-- Emoji decorativ în colț -->
+    <div class="floating-emoji">🌸</div>
+</div>
+

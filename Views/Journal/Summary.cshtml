@@ -1,0 +1,35 @@
+﻿@model List<IGrouping<DateTime, AplicatieRutina.Models.JournalEntry>>
+@{
+    ViewData["Title"] = "Journal Summary";
+}
+<link rel="stylesheet" href="~/css/journal.css" />
+
+<div class="journal-summary-container">
+    <h2>📖 Journal Entries by Day</h2>
+
+    @foreach (var group in Model)
+    {
+        <div class="journal-day-card" onclick="toggleEntries('@group.Key.ToString("yyyy-MM-dd")')">
+            <strong>@group.Key.ToString("dddd, dd MMMM yyyy")</strong>
+            <ul id="entries-@group.Key.ToString("yyyy-MM-dd")" style="display:none;">
+                @foreach (var entry in group)
+                {
+                    <li class="journal-entry-text">
+                        ✏️ @entry.Content
+                        <a href="@Url.Action("Edit", "Journal", new { id = entry.Id })" class="btn btn-sm btn-outline-secondary ms-2">✏️ Edit</a>
+                        <a href="@Url.Action("Delete", "Journal", new { id = entry.Id })" class="btn btn-sm btn-outline-danger ms-1" onclick="return confirm('Are you sure?')">🗑️ Delete</a>
+                    </li>
+                }
+            </ul>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        function toggleEntries(id) {
+            const el = document.getElementById("entries-" + id);
+            if (el) el.style.display = el.style.display === "none" ? "block" : "none";
+        }
+    </script>
+}

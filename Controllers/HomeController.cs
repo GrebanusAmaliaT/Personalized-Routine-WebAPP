@@ -41,9 +41,14 @@ namespace AplicatieRutina.Controllers
             ViewBag.Quote = quote;
             ViewBag.Today = DateTime.Today.ToString("dddd, dd MMMM yyyy");
 
-            return View();
-        }
+            var events = _context.CalendarEvents
+                .Where(e => e.Date >= DateTime.Today)
+                .OrderBy(e => e.Date)
+                .ToList();
 
+            return View(events);
+           // return View();
+        }
 
         private async Task<string> GetMotivationalQuote()
         {
