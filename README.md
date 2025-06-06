@@ -36,12 +36,12 @@ Lunaria creates a self space for everyone. No judgement, only love and support!
 - Emoji reactions to posts, styled for touch interaction  
 - Product comparison section with sticky container and clean layout  
 
-## Sneak Peaks 📸
-
-![{76634ED9-7048-4878-83DE-0FFEB363EF57}](https://github.com/user-attachments/assets/0d1ecc57-c493-486f-a913-1a06f3caa8ee)
- 
+## 📸
 ![{92174C5D-CB6E-4C04-A549-7559909B4C34}](https://github.com/user-attachments/assets/b0b82f64-7c97-414c-9c43-5dcb47431a9f)
 
 ![{2BC24797-3003-4A81-B47F-94CF317FD580}](https://github.com/user-attachments/assets/1e220566-2fab-4a41-8c3e-b23c09171eb5)
+
+![{76634ED9-7048-4878-83DE-0FFEB363EF57}](https://github.com/user-attachments/assets/0d1ecc57-c493-486f-a913-1a06f3caa8ee)
+ 
 
 > "Self-care isn't a luxury — it's part of becoming your best self."
