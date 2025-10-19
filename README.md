@@ -1,4 +1,4 @@
-## Lunaria - Your Self-Care, Organized 🌸
+# Lunaria - Your Self-Care, Organized 🌸
 Lunaria is a web app that helps users design and follow a personalized self-care routine.
 From morning and evening plans to visual progress tracking, this app turns healthy habits into a lifestyle — structured, simple, and motivating.
 Lunaria creates a self space for everyone. No judgement, only love and support!
@@ -26,7 +26,7 @@ Lunaria creates a self space for everyone. No judgement, only love and support!
 - Functional product comparison tool with persistent local storage  
 - Mobile-first, responsive layout for all screen sizes  
 
-## 🛠 Technologies & Concepts Used 
+## Technologies & Concepts Used 
 - ASP.NET MVC for app structure and backend logic  
 - SQL Server for user data and routines storage  
 - JavaScript (vanilla) for interactivity, notifications, emoji reactions  
